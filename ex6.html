@@ -16,8 +16,24 @@
     <p>Shopping Cart:</p>
     <ul id="shopList"></ul>
 
-    <script>
-        
+    <script> 
+        var selected = document.getElementById("select_item");
+        var ul = document.getElementById("shopList");
+        selected.addEventListener("change", addNewItem);
+
+        function addNewItem() {
+            var selectedValue = selected.value;
+            var items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].textContent === selectedValue) {
+                    return;
+                }
+            }
+            var li = document.createElement("li");
+            var textNode = document.createTextNode(selectedValue);
+            li.appendChild(textNode);
+            ul.appendChild(li);
+        }
         // add code here
     
     </script>
